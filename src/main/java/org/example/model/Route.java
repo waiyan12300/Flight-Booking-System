@@ -3,10 +3,12 @@ package org.example.model;
 public class Route {
     private String departureCity;
     private String destinationCity;
+    private double distance;
 
-    public Route(String departureCity, String destinationCity) {
+    public Route(String departureCity, String destinationCity, double distance) {
         this.departureCity = departureCity;
         this.destinationCity = destinationCity;
+        this.distance = distance;
     }
 
     public String getDepartureCity() {
@@ -15,6 +17,10 @@ public class Route {
 
     public String getDestinationCity() {
         return destinationCity;
+    }
+
+    public double getDistance() {
+        return distance;
     }
 
     @Override

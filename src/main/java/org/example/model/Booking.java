@@ -34,7 +34,8 @@ public class Booking {
                 "\nFlight: " + flight.getFlightNumber() +
                 "\nRoute: " + flight.getRoute() +
                 "\nSeat: " + seat +
-                "\nTicket Price: $" + ticket.getPrice();
+                "\nTicket Price: $" + ticket.getPrice() +
+                "\n-------------";
     }
 }
 

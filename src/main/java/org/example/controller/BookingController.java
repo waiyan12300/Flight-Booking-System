@@ -22,12 +22,12 @@ public class BookingController {
         cities = Arrays.asList("Japan", "Myanmar", "Thailand");
         flights = new ArrayList<>();
 
-        Route r1 = new Route("Japan", "Myanmar");
-        Route r2 = new Route("Japan", "Thailand");
-        Route r3 = new Route("Myanmar", "Japan");
-        Route r4 = new Route("Myanmar", "Thailand");
-        Route r5 = new Route("Thailand", "Myanmar");
-        Route r6 = new Route("Thailand", "Japan");
+        Route r1 = new Route("Japan", "Myanmar", 4200.0);
+        Route r2 = new Route("Japan", "Thailand", 3000.0);
+        Route r3 = new Route("Myanmar", "Japan", 3200.0);
+        Route r4 = new Route("Myanmar", "Thailand", 1000.0);
+        Route r5 = new Route("Thailand", "Myanmar",1000.0);
+        Route r6 = new Route("Thailand", "Japan", 3000.0);
 
 
         Flight f1 = new Flight("F101", r1);
@@ -105,7 +105,8 @@ public class BookingController {
 
         String name = view.getCustomerName();
         Customer customer = new Customer(name);
-        Ticket ticket = new Ticket(500.0);
+        double price = calculateTicketPrice(selectedFlight.getRoute(), 0.20);
+        Ticket ticket = new Ticket(price);
         Booking booking = new Booking(customer, selectedFlight, selectedSeat, ticket);
         bookings.add(booking);
         view.showMessage("\n====Booking successful!====");
@@ -143,6 +144,10 @@ public class BookingController {
         bookings.remove(cancelIndex);
 
         view.showMessage("Booking canceled successfully.");
+    }
+
+    public double calculateTicketPrice(Route route, double costPerKilometer) {
+        return route.getDistance() * costPerKilometer;
     }
 
 }
